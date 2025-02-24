@@ -47,7 +47,7 @@ async fn run_s3_operations(
     s3_code_examples::create_bucket(&client, &bucket_name, &region).await?;
     let run_example: Result<(), S3ExampleError> = (async {
         s3_code_examples::upload_object(&client, &bucket_name, &file_name, &key).await?;
-        // let _object = s3_code_examples::download_object(&client, &bucket_name, &key).await;
+        let _object = s3_code_examples::download_object(&client, &bucket_name, &key).await;
         s3_code_examples::copy_object(&client, &bucket_name, &bucket_name, &key, &target_key)
             .await?;
         s3_code_examples::list_objects(&client, &bucket_name).await?;
